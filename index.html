@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shirdi Sai Baba – Official Devotional Website</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #1a0a00;
+      color: #f5e6c8;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #5c1a00 0%, #8b2500 50%, #5c1a00 100%);
+      border-bottom: 4px solid #d4a017;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,160,23,0.25) 0%, transparent 70%);
+    }
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #f5c842;
+      text-shadow: 0 0 20px rgba(212,160,23,0.8), 2px 2px 4px rgba(0,0,0,0.8);
+      letter-spacing: 2px;
+      position: relative;
+    }
+    header p.tagline {
+      font-size: 1.1rem;
+      color: #f5e6c8;
+      margin-top: 0.5rem;
+      font-style: italic;
+      opacity: 0.9;
+      position: relative;
+    }
+    .om-symbol {
+      font-size: 2.5rem;
+      color: #d4a017;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      background: #2d0f00;
+      border-bottom: 2px solid #d4a017;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    nav a {
+      color: #f5c842;
+      text-decoration: none;
+      padding: 0.9rem 1.5rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, color 0.2s;
+      border-right: 1px solid #5c1a0055;
+    }
+    nav a:hover { background: #5c1a00; color: #fff; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(180deg, #2d0f00 0%, #1a0a00 100%);
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+      position: relative;
+    }
+    .hero-image {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #5c1a00, #8b2500);
+      border: 5px solid #d4a017;
+      box-shadow: 0 0 40px rgba(212,160,23,0.5);
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+    }
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 2px dashed rgba(212,160,23,0.4);
+      animation: rotate 20s linear infinite;
+    }
+    @keyframes rotate { to { transform: rotate(360deg); } }
+
+    .hero h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: #f5c842;
+      margin-bottom: 0.75rem;
+    }
+    .hero .mantra {
+      font-size: 1.3rem;
+      color: #d4a017;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+    }
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.8;
+      color: #e8d4a8;
+      font-size: 1.05rem;
+    }
+
+    /* ── Sections ── */
+    .section-divider {
+      text-align: center;
+      color: #d4a017;
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      letter-spacing: 8px;
+    }
+
+    section { padding: 3rem 1rem; }
+    section:nth-child(even) { background: #210c00; }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: #f5c842;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #d4a017;
+      margin: 0.5rem auto 2rem;
+      border-radius: 2px;
+    }
+
+    /* ── Cards ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: linear-gradient(145deg, #2d0f00, #3d1500);
+      border: 1px solid #5c2800;
+      border-top: 3px solid #d4a017;
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(212,160,23,0.2);
+    }
+    .card .icon { font-size: 2.2rem; margin-bottom: 0.75rem; }
+    .card h3 { color: #f5c842; margin-bottom: 0.5rem; font-size: 1.15rem; }
+    .card p { color: #c8b08a; line-height: 1.7; font-size: 0.95rem; }
+
+    /* ── Teachings ── */
+    .teachings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .teaching {
+      border-left: 4px solid #d4a017;
+      padding: 1rem 1.25rem;
+      background: rgba(212,160,23,0.05);
+      border-radius: 0 6px 6px 0;
+    }
+    .teaching blockquote {
+      font-style: italic;
+      color: #f5e6c8;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
+    .teaching cite { color: #d4a017; font-size: 0.9rem; }
+
+    /* ── Timeline ── */
+    .timeline {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: #d4a017;
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+    .timeline-year {
+      width: 90px;
+      flex-shrink: 0;
+      text-align: center;
+      color: #d4a017;
+      font-weight: bold;
+      font-size: 1.05rem;
+      padding-top: 0.25rem;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      background: #d4a017;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px rgba(212,160,23,0.6);
+    }
+    .timeline-content {
+      flex: 1;
+      background: #2d0f00;
+      border: 1px solid #5c2800;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+    }
+    .timeline-content h4 { color: #f5c842; margin-bottom: 0.25rem; }
+    .timeline-content p { color: #c8b08a; font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── Aarti / Prayer box ── */
+    .prayer-box {
+      max-width: 680px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, #2d0f00, #3d1500);
+      border: 2px solid #d4a017;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(212,160,23,0.15);
+    }
+    .prayer-box h3 { color: #f5c842; margin-bottom: 1rem; font-size: 1.4rem; }
+    .prayer-box .aarti-text {
+      color: #f5e6c8;
+      font-size: 1.05rem;
+      line-height: 2;
+      font-style: italic;
+      border-top: 1px solid #5c2800;
+      padding-top: 1rem;
+    }
+
+    /* ── Visit info ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .info-card {
+      background: #2d0f00;
+      border: 1px solid #5c2800;
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .info-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .info-card h4 { color: #f5c842; margin-bottom: 0.5rem; }
+    .info-card p { color: #c8b08a; font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── Footer ── */
+    footer {
+      background: #0d0500;
+      border-top: 3px solid #d4a017;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #8a7055;
+      font-size: 0.9rem;
+    }
+    footer .blessings {
+      color: #d4a017;
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .timeline::before { left: 20px; }
+      .timeline-item, .timeline-item:nth-child(odd) { flex-direction: column; padding-left: 50px; }
+      .timeline-dot { left: 20px; }
+      .timeline-year { text-align: left; width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <span class="om-symbol">ॐ</span>
+  <h1>Shirdi Sai Baba</h1>
+  <p class="tagline">Sab Ka Malik Ek – The Lord of All is One</p>
+</header>
+
+<!-- ── Navigation ── -->
+<nav>
+  <a href="#about">About</a>
+  <a href="#teachings">Teachings</a>
+  <a href="#life">Life &amp; Timeline</a>
+  <a href="#miracles">Miracles</a>
+  <a href="#aarti">Aarti</a>
+  <a href="#visit">Visit Shirdi</a>
+</nav>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="hero-image">🙏</div>
+  <h2>Om Sai Ram</h2>
+  <p class="mantra">"Shraddha aur Saburi" — Faith and Patience</p>
+  <p>
+    Shirdi Sai Baba was a spiritual master and saint who lived in Shirdi, Maharashtra, India.
+    Revered by millions across faiths — Hinduism and Islam alike — he taught the unity of God,
+    love for all beings, and the power of devoted surrender.
+  </p>
+</div>
+
+<div class="section-divider">✦ ✦ ✦</div>
+
+<!-- ── About ── -->
+<section id="about">
+  <h2 class="section-title">About Sai Baba</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🕌🛕</div>
+      <h3>Universal Saint</h3>
+      <p>Sai Baba transcended religious boundaries. He lived in a mosque he called Dwarkamai yet performed Hindu rites. He was a living symbol that all paths lead to the one God.</p>
+    </div>
+    <div class="card">
+      <div class="icon">❤️</div>
+      <h3>Love for Humanity</h3>
+      <p>He spent his life feeding the poor, healing the sick, and comforting the troubled. His door was open to every person regardless of caste, creed, or social standing.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌟</div>
+      <h3>Divine Presence</h3>
+      <p>Devotees across generations have experienced his living grace — through answered prayers, timely guidance, and miraculous interventions that continue to this day.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📿</div>
+      <h3>Eternal Guru</h3>
+      <p>He initiated disciples without distinction, bestowing spiritual knowledge through simple acts, parables, and the silence of his presence. He is considered a Sadguru — a true spiritual guide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Teachings ── -->
+<section id="teachings">
+  <h2 class="section-title">Sacred Teachings</h2>
+  <div class="teachings-grid">
+    <div class="teaching">
+      <blockquote>"Why do you fear when I am here?"</blockquote>
+      <cite>— Sai Baba's assurance to all devotees</cite>
+    </div>
+    <div class="teaching">
+      <blockquote>"Before you speak, ask yourself: Is it kind, is it necessary, is it true?"</blockquote>
+      <cite>— On the power of words</cite>
+    </div>
+    <div class="teaching">
+      <blockquote>"Have faith and patience. Then I will always be with you wherever you are."</blockquote>
+      <cite>— Shraddha and Saburi</cite>
+    </div>
+    <div class="teaching">
+      <blockquote>"Give food to the hungry, water to the thirsty, and clothes to the naked. Then God will be pleased."</blockquote>
+      <cite>— On selfless service</cite>
+    </div>
+    <div class="teaching">
+      <blockquote>"Do not be idle. Work, utter God's name, and read holy scriptures."</blockquote>
+      <cite>— On daily spiritual practice</cite>
+    </div>
+    <div class="teaching">
+      <blockquote>"If anyone is angry with another, he wounds me. Help others and give them whatever they need."</blockquote>
+      <cite>— On compassion and unity</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ── Life Timeline ── -->
+<section id="life">
+  <h2 class="section-title">Life &amp; Timeline</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">~1838</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>Birth</h4>
+        <p>Believed to have been born around 1838, exact birthplace and parentage remain a mystery — as Baba himself kept it so.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">~1858</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>Arrives in Shirdi</h4>
+        <p>A young ascetic arrives in Shirdi village, Maharashtra, and takes up residence under a neem tree.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1858–</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>Dwarkamai</h4>
+        <p>Baba makes an old dilapidated mosque his permanent home, lighting a sacred dhuni (fire) that he kept burning continuously.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1886</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>Maha Samadhi Experience</h4>
+        <p>Baba appeared to stop breathing for three days, then revived — an event seen as a divine revelation of his mastery over life and death.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1910s</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>Growing Devotion</h4>
+        <p>Pilgrims, scholars, and seekers from across India begin flocking to Shirdi. His fame spreads throughout Maharashtra and beyond.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1918</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h4>Maha Samadhi</h4>
+        <p>On 15 October 1918, Baba took Maha Samadhi (conscious departure from the body) at Dwarkamai. His tomb in Shirdi remains a living place of grace.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Miracles ── -->
+<section id="miracles">
+  <h2 class="section-title">Divine Miracles</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🔥</div>
+      <h3>The Sacred Dhuni</h3>
+      <p>Baba kept a sacred fire (dhuni) burning at Dwarkamai. The ash (Udi) from this fire is said to carry healing properties and is distributed to devotees to this day.</p>
+    </div>
+    <div class="card">
+      <div class="icon">💧</div>
+      <h3>Water into Oil</h3>
+      <p>When shopkeepers refused to give oil for lamps, Baba filled the lamps with water — and they burned brightly throughout the night, witnessed by the entire village.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌿</div>
+      <h3>Healing the Sick</h3>
+      <p>Countless devotees report miraculous recoveries from illness after receiving Baba's Udi, his blessings, or simply by surrendering to his grace in prayer.</p>
+    </div>
+    <div class="card">
+      <div class="icon">👁️</div>
+      <h3>Omniscience</h3>
+      <p>Baba repeatedly demonstrated knowledge of events happening far away, revealing the thoughts and deeds of people he had never met — affirming his divine awareness.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Aarti ── -->
+<section id="aarti">
+  <h2 class="section-title">Aarti &amp; Prayer</h2>
+  <div class="prayer-box">
+    <h3>🪔 Sai Baba Aarti</h3>
+    <div class="aarti-text">
+      Aartī Sāī Bābā, Saukhyadātā Jīvā<br/>
+      Charanārajatali Dhyā Dāsāvishī Dhāvā<br/>
+      Jālūniyā Ananga, Swasvarūpin Rahe Danga<br/>
+      Mumukshu Janāncha, Dāvisi Nija Dhāma<br/><br/>
+
+      <em>Victory to Sai Baba, the giver of joy to all souls.<br/>
+      Place your feet on the heads of your devotees;<br/>
+      run towards us, your servants.<br/>
+      Having burnt away passion, you dwell in your own true nature,<br/>
+      and show your own abode to those who seek liberation.</em>
+    </div>
+  </div>
+</section>
+
+<!-- ── Visit Shirdi ── -->
+<section id="visit">
+  <h2 class="section-title">Visit Shirdi</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="icon">📍</div>
+      <h4>Location</h4>
+      <p>Shirdi, Ahmednagar District, Maharashtra, India — approx. 300 km from Mumbai and 130 km from Pune.</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">🕰️</div>
+      <h4>Darshan Timings</h4>
+      <p>The Samadhi Mandir is open from 4:00 AM to 11:00 PM. Kakad Aarti at 5:15 AM, Shej Aarti at 10:30 PM.</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">🚂</div>
+      <h4>How to Reach</h4>
+      <p>Nearest railway station: Sainagar Shirdi (dedicated station). Nearest airport: Shirdi Airport, with flights from major Indian cities.</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">🏨</div>
+      <h4>Accommodation</h4>
+      <p>The Shri Saibaba Sansthan Trust provides affordable lodging for pilgrims. Many private hotels are also available near the temple.</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">🍛</div>
+      <h4>Prasadalaya</h4>
+      <p>Free meals (prasad) are served to thousands of pilgrims daily at the Trust's Prasadalaya — a tradition Baba started during his lifetime.</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">📞</div>
+      <h4>Contact</h4>
+      <p>Shri Saibaba Sansthan Trust, Shirdi — 423 109, Maharashtra. Official website: sai.org.in</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <p class="blessings">🙏 Sab Ka Malik Ek — Om Sai Ram 🙏</p>
+  <p>This site is a humble offering at the lotus feet of Shri Shirdi Sai Baba.</p>
+  <p style="margin-top:0.5rem;">May his blessings be upon all who visit. &copy; Shirdi Sai Baba Devotional Site</p>
+</footer>
+
+</body>
+</html>
